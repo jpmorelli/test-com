@@ -3,7 +3,7 @@ name: PR generator
 on:
     push:
         branches:
-            - qa
+            - develop
         
 jobs:
     createPullRequest:
