@@ -25,7 +25,7 @@ jobs:
             signoff: false
             # base: develop ## The origin branch name
             branch: qa ## The pull request destination branch name.
-            delete-branch: true
+            delete-branch: false
             title: '[Example] Update report'
             body: |
               Update report
@@ -42,4 +42,4 @@ jobs:
             #   developers
             #   qa-team
             # milestone: 1
-            draft: false
+            draft: true
