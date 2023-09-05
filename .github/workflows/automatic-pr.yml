@@ -23,7 +23,7 @@ jobs:
             committer: GitHub <noreply@github.com>
             author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
             signoff: false
-            base: develop ## The origin branch name
+            # base: develop ## The origin branch name
             branch: qa ## The pull request destination branch name.
             delete-branch: true
             title: '[Example] Update report'
@@ -36,7 +36,7 @@ jobs:
             labels: |
               report
               automated pr
-            assignees: jpmorelli
+            # assignees: jpmorelli
             # reviewers: jpmorelli
             # team-reviewers: |
             #   developers
