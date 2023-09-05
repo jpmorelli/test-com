@@ -23,8 +23,8 @@ jobs:
             committer: GitHub <noreply@github.com>
             author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
             signoff: false
-            base: qa ## The destination branch name
-            branch: develop ## The pull request origin branch name.
+            base:develop ## The origin branch name
+            branch: qa ## The pull request destination branch name.
             delete-branch: true
             title: '[Example] Update report'
             body: |
