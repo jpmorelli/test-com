@@ -3,7 +3,7 @@ name: PR generator
 on:
     push:
         branches:
-            - qa
+            - develop
         
 jobs:
     createPullRequest:
@@ -18,12 +18,13 @@ jobs:
           id: cpr
           uses: peter-evans/create-pull-request@v5
           with:
-            token: ${{ secrets.GITHUB_TOKEN }}
+            token: ${{ secrets.TOKEN }}
             commit-message: Update report
             committer: GitHub <noreply@github.com>
             author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
             signoff: false
-            branch: example-patches
+            # base: develop ## The origin branch name
+            branch: qa ## The pull request destination branch name.
             delete-branch: true
             title: '[Example] Update report'
             body: |
@@ -35,10 +36,10 @@ jobs:
             labels: |
               report
               automated pr
-            assignees: jpmorelli
-            reviewers: jpmorelli
-            team-reviewers: |
-              developers
-              qa-team
-            milestone: 1
+            # assignees: jpmorelli
+            # reviewers: jpmorelli
+            # team-reviewers: |
+            #   developers
+            #   qa-team
+            # milestone: 1
             draft: false
