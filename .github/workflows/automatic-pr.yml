@@ -23,7 +23,7 @@ jobs:
             committer: GitHub <noreply@github.com>
             author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
             signoff: false
-            base: develop ## Branch desde donde quiero hacer merge
+            # base: develop
             branch: qa ## The pull request branch name.
             delete-branch: true
             title: '[Example] Update report'
@@ -38,8 +38,8 @@ jobs:
               automated pr
             assignees: jpmorelli
             reviewers: jpmorelli
-            team-reviewers: |
-              developers
-              qa-team
+            # team-reviewers: |
+            #   developers
+            #   qa-team
             # milestone: 1
             draft: false
