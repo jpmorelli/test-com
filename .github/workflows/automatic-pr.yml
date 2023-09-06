@@ -1,35 +1,20 @@
 name: PR generator
 
+
 on:
   push:
-    branches:
-      - develop
-        
+    branches-ignore: master
+
 jobs:
-  createPullRequest:
+  action-pull-request:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-
-      - name: Make changes to pull request
-        run: date +%s > report.txt
-
-      - name: Run the Action
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      
+      - name: Create pull request
         uses: devops-infra/action-pull-request@v0.5.5
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          source_branch: development
+          title: Automatic pull request
           target_branch: qa
-          title: My automatic pull request
-          template: .github/PULL_REQUEST_TEMPLATE.md
-          body: "**Automated pull request**"
-          reviewer: octocat
-          assignee: octocat
-          label: enhancement
-          milestone: My milestone
-          draft: true
-          old_string: "<!-- Add your description here -->"
-          new_string: "** Automatic pull request**"
-          get_diff: true
-          ignore_users: "dependabot"
-          allow_no_diff: false
