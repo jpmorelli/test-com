@@ -7,15 +7,32 @@ on:
 
 jobs:
   action-pull-request:
+    # runs-on: ubuntu-latest
+    # steps:
+    #   - name: Checkout repository
+    #     uses: actions/checkout@v3
+      
+    #   - name: Create pull request
+    #     uses: devops-infra/action-pull-request@v0.5.5
+    #     with:
+    #       github_token: ${{ secrets.TOKEN }}
+    #       title: Automatic pull request
+    #       source_branch: origin/develop
+    #       target_branch: origin/qa
+    
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
+      - name: Checkout Code
         uses: actions/checkout@v3
+        
+      - name: Derive from branch name
+        run: |
+            # do custom parsing of your code / date to derive a branch from
+            PR_BRANCH_FROM=release-v$(cat VERSION)
+            echo "PULL_REQUEST_FROM_BRANCH=${PR_BRANCH_FROM}" >> $GITHUB_ENV
       
-      - name: Create pull request
-        uses: devops-infra/action-pull-request@v0.5.5
-        with:
-          github_token: ${{ secrets.TOKEN }}
-          title: Automatic pull request
-          source_branch: origin/develop
-          target_branch: origin/qa
+      - name: pull-request-action
+        uses: vsoch/pull-request-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PULL_REQUEST_BRANCH: "qa"
