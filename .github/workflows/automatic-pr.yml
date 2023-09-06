@@ -14,7 +14,7 @@ jobs:
       - name: Make changes to pull request
         run: date +%s > report.txt
 
-        - name: Run the Action
+      - name: Run the Action
         uses: devops-infra/action-pull-request@v0.5.5
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
