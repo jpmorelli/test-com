@@ -4,7 +4,6 @@ name: PR generator
 on:
   push:
     branches-ignore: master
-    branch: [ develop ]
 
 jobs:
   action-pull-request:
@@ -16,5 +15,7 @@ jobs:
       - name: Create pull request
         uses: devops-infra/action-pull-request@v0.5.5
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.TOKEN }}
           title: Automatic pull request
+          source_branch: origin/develop
+          target_branch: origin/qa
